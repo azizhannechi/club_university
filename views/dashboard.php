@@ -1,5 +1,6 @@
 <?php
-require_once '../controllers/admincontroller.php';
+include '../models/usermodels.php';
+include '../controllers/admincontroller.php';
 
 // Initialiser le contrôleur Admin
 $adminController = new AdminController();

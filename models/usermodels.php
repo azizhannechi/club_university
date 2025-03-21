@@ -1,5 +1,6 @@
 <?php
 require_once '../config/config.php';
+require_once '../controllers/usercontroller.php';
 class UserModel {
     private $db;
 
@@ -20,5 +21,6 @@ class UserModel {
             return "Erreur : " . $this->db->error;
         }
     }
+    
 }
 ?>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page d'acceuil</title>
+
+    <!--boostrap css -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!--css-->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header>
+        <style>
+            /* Réutilisation des styles de la page principale */
+            .animated-header {
+                height: 100px;
+                background: #0d6efd;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .wave-effect {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 100px;
+                background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" opacity="0.25" d="M 0 50 Q 250 0 500 50 T 1000 50 L 1000 100 L 0 100 Z"></path></svg>');
+                animation: wave 10s infinite linear;
+            }
+    
+            .signup-container {
+                max-width: 500px;
+                margin: 5rem auto;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+                border-radius: 15px;
+                overflow: hidden;
+            }
+    
+            .signup-card {
+                padding: 2.5rem;
+                background: rgba(255,255,255,0.95);
+            }
+    
+            .btn-essec {
+                background: #0d6efd;
+                color: white;
+                transition: transform 0.3s ease;
+            }
+    
+            .btn-essec:hover {
+                transform: translateY(-2px);
+                color: white;
+            }
+    
+            @keyframes wave {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-1000px); }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <!-- En-tête animé identique -->
+        <div class="container-fluid p-0">
+            <header class="animated-header">
+                <h1 class="text-white display-4">Enjoy ESSECT Clubs</h1>
+                <div class="wave-effect"></div>
+            </header>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <ul class="navbar-nav">
+                <img src="../assets/imgs/capture essect.jpg" class="imag-fluid rounded-circle" alt="" width="10%">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="acceuil.html">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="infolab.html">InfoLab</a></li>
+                        <li class="nav-item"><a class="nav-link" href="enactus.html">Enactus</a></li>
+                        <li class="nav-item"><a class="nav-link" href="radio.html">Radio</a></li>
+                    </ul>
+            </ul>
+            <form class="d-flex ms-3">
+                <a href="login.php" class="btn btn-outline-light me-2">Login</a>
+                <a href="signup.php" class="btn btn-warning">Sign up</a>
+            </form>
+        </div>
+    </nav>
+    <section class="container my-5 text-center">
+        <div class="e">
+            <p>
+                <span><strong>L'ESSECT</strong></span>  
+                Nos clubs sont au cœur de la vie étudiante, offrant des opportunités d'apprentissage, 
+                d'innovation et de contribution à la communauté. Chaque club porte une mission unique 
+                pour enrichir l'expérience académique et personnelle des étudiants.
+            </p>
+            <div>
+                <img class="i" src="../assets/imgs/99.jpeg" alt="Image d'un club étudiant">
+            </div>
+        </div>
+        <div class="container my-5">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active"><img src="../assets/imgs/5.jpg" class="d-block w-100" style="height: 400px" alt="Image 1"></div>
+                    <div class="carousel-item"><img src="../assets/imgs/enactus.jpg" class="d-block w-100" style="height: 400px" alt="Image 2"></div>
+                    <div class="carousel-item"><img src="../assets/imgs/infolabpic.jpg.jpg" class="d-block w-100" style="height: 400px" alt="Image 3"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        <h2 class="mb-4">Nos Clubs : join now</h2>
+        <div class="row">
+            <div class="col-md-4"><div class="card p-4 bg-primary text-white"><h3><a href="login.php">InfoLab</a></h3></div></div>
+            <div class="col-md-4"><div class="card p-4 bg-warning  text-white"><h3>Enactus</h3></div></div>
+            <div class="col-md-4"><div class="card p-4 bg-success text-dark"><h3>Radio</h3></div></div>
+        </div>
+    </section>
+    <div class="map" style="width: 100%; height: 450px;">
+        <iframe src="https://www.google.com/maps/embed?..." width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 Mon Club Universitaire. Tous droits réservés.</p>
+        <p>
+            <a href="#" class="text-white text-decoration-none me-3">Mentions légales</a>
+            <a href="#" class="text-white text-decoration-none me-3">Politique de confidentialité</a>
+            <a href="#" class="text-white text-decoration-none">Contact</a>
+        </p>
+    </footer>
+
+    <!--boostrap js-->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <!--js-->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

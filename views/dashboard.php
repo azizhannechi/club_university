@@ -4,23 +4,32 @@ include '../controllers/admincontroller.php';
 
 // Initialiser le contrôleur Admin
 $adminController = new AdminController();
-
-// Récupérer les statistiques
-$clubStats = $adminController->generateStatistics();
+$clubsData = $adminController->getClubsData();
+// Récupérer les statistiques et les données
 $allClubs = $adminController->viewClubs();
 $applications = $adminController->viewApplications();
-$alluser = $adminController->getAllUsers()
-?>
-   <!DOCTYPE html>
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin dashboard</title>
+$alluser = $adminController->getAllUsers();
+$membresParClub = $adminController->viewMembersByClub();
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <style>
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="container-fluid p-0">
+        <header class="animated-header">
+            <h1 class="text-white display-4">Espace Administrateur</h1>
+            <div class="wave-effect"></div>
+        </header>
+    </div>
+        <style>
         .animated-header {
             height: 100px;
             background: #dc3545;
@@ -40,80 +49,42 @@ $alluser = $adminController->getAllUsers()
             animation: wave 10s infinite linear;
         }
     </style>
-    <body>
-    <div class="container-fluid p-0">
-        <header class="animated-header">
-            <h1 class="text-white display-4">Espace Administrateur</h1>
-            <div class="wave-effect"></div>
-        </header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="adminpage.php">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="membre.php">Gérer les membres</a></li>
+                <li class="nav-item"><a class="nav-link" href="paremétre.php">Paramètres</a></li>
+            </ul>
+            <form class="d-flex ms-auto">
+                <a href="logout.php" class="btn btn-outline-light">Déconnexion</a>
+            </form>
+        </div>
+    </nav>
 
-        <!-- Section statistiques -->
-        <h3>Statistiques des clubs</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID du Club</th>
-                    <th>Nombre de Membres</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($clubStats as $stat): ?>
-                    <tr>
-                        <td><?= $stat['club_id'] ?></td>
-                        <td><?= $stat['total_members'] ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
 
-        <!-- Liste des clubs -->
-        <h3>Liste des Clubs</h3>
-        <table class="table table-bordered">
-            <thead>
+    <div class="container mt-4">
+    <h3>Liste des Clubs</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom du Club</th>
+                <th>Date de Création</th>
+                <th>Nombre de Membres</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($clubsData as $club): ?>
                 <tr>
-                    <th>ID</th>
-                    <th>Nom du Club</th>
-                    <th>Date de Création</th>
-                    <th>Réseaux Sociaux</th>
+                    <td><?= htmlspecialchars($club['club_id']) ?></td>
+                    <td><?= htmlspecialchars($club['club_name']) ?></td>
+                    <td><?= htmlspecialchars($club['date_de_creation']) ?></td>
+                    <td><?= htmlspecialchars($club['total_membres']) ?></td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($allClubs as $club): ?>
-                    <tr>
-                        <td><?= $club['id'] ?></td>
-                        <td><?= $club['name'] ?></td>
-                        <td><?= $club['creation_date'] ?></td>
-                        <td><?= $club['social_links'] ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-
-        <!-- Liste des demandes d'adhésion -->
-        <h3>Demandes d'Adhésion</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID de la Demande</th>
-                    <th>ID Étudiant</th>
-                    <th>ID du Club</th>
-                    <th>CV</th>
-                    <th>Date de Demande</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($applications as $app): ?>
-                    <tr>
-                        <td><?= $app['id'] ?></td>
-                        <td><?= $app['student_id'] ?></td>
-                        <td><?= $app['club_id'] ?></td>
-                        <td><a href="uploads/<?= $app['cv'] ?>" target="_blank">Voir CV</a></td>
-                        <td><?= $app['application_date'] ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 </body>
-</html>
 </html>

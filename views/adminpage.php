@@ -14,6 +14,15 @@ if (isset($_GET['delete_id'])) {
         echo "<div class='alert alert-danger'>Erreur lors de la suppression.</div>";
     }
 }
+if (isset($_GET['update_id'])) {
+    $delete_id = $_GET['update_id'];
+    if ($adminController->updateUser($delete_id)) {
+        echo "<div class='alert alert-success'>membre modifier avec succès.</div>";
+    } else {
+        echo "<div class='alert alert-danger'>Erreur lors de la modification.</div>";
+    }
+}
+
 
 // Récupérer tous les utilisateurs
 $users = $adminController->getAllUsers();
@@ -26,28 +35,33 @@ $users = $adminController->getAllUsers();
     <title>Page Administrateur</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        .animated-header {
-            height: 100px;
-            background: #dc3545;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .wave-effect {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" opacity="0.25" d="M 0 50 Q 250 0 500 50 T 1000 50 L 1000 100 L 0 100 Z"></path></svg>');
-            animation: wave 10s infinite linear;
-        }
+            /* Réutilisation des styles de la page principale */
+            .animated-header {
+                height: 100px;
+                background: #ea2c36;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .wave-effect {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 100px;
+                background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" opacity="0.25" d="M 0 50 Q 250 0 500 50 T 1000 50 L 1000 100 L 0 100 Z"></path></svg>');
+                animation: wave 10s infinite linear;
+            }
+            @keyframes wave {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-1000px); }
+            }
     </style>
 </head>
 <body>
@@ -62,8 +76,8 @@ $users = $adminController->getAllUsers();
         <div class="container">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link active" href="adminpage.php">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="dashboard.php">Gérer les utilisateurs</a></li>
-                <li class="nav-item"><a class="nav-link" href="settings.html">Paramètres</a></li>
+                <li class="nav-item"><a class="nav-link" href="membre.php">Gérer les membres</a></li>
+                <li class="nav-item"><a class="nav-link" href="paramétre.php">Paramètres</a></li>
             </ul>
             <form class="d-flex ms-auto">
                 <a href="logout.php" class="btn btn-outline-light">Déconnexion</a>
@@ -78,17 +92,17 @@ $users = $adminController->getAllUsers();
         <div class="row">
             <div class="col-md-4">
                 <div class="card p-4 bg-primary text-white">
-                    <h3><a href="dashboard.php" class="text-white text-decoration-none">Gérer Utilisateurs</a></h3>
+                    <h3><a href="dashboard.php" class="text-white text-decoration-none">Gérer Les clubs</a></h3>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card p-4 bg-warning text-dark">
-                    <h3><a href="activity_logs.html" class="text-dark text-decoration-none">Journal d'Activité</a></h3>
+                    <h3><a href="activity_logs.php" class="text-dark text-decoration-none">Journal d'Activité</a></h3>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card p-4 bg-success text-white">
-                    <h3><a href="settings.html" class="text-white text-decoration-none">Paramètres</a></h3>
+                    <h3><a href="paramétre.php" class="text-white text-decoration-none">Paramètres</a></h3>
                 </div>
             </div>
         </div>
@@ -117,7 +131,7 @@ $users = $adminController->getAllUsers();
                         <td><?= $user['email'] ?></td>
                         <td><?= $user['role'] ?></td>
                         <td>
-                            <a href="edit_user.php?id=<?= $user['id'] ?>" class="btn btn-warning btn-sm">Modifier</a>
+                            <a href="adminpage.php?update_id=<?= $user['id'] ?>" class="btn btn-warning btn-sm">Modifier</a>
                             <a href="adminpage.php?delete_id=<?= $user['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">Supprimer</a>
                         </td>
                     </tr>
@@ -136,8 +150,8 @@ $users = $adminController->getAllUsers();
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -7,9 +7,9 @@
     
     <!-- Styles et scripts externes -->
     <!--boostrap css -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!--css-->
-    <link rel="stylesheet" href="assets/css/infolab.css">
+    <link rel="stylesheet" href="../assets/css/infolab.css">
     <style>
         /* Styles personnalisés */
         .sidebar {
@@ -75,18 +75,18 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <ul class="navbar-nav">
-                <img src="assets/imgs/profil.jpg" class="img-fluid rounded-circle" alt="Logo" width="10%">
+                <img src="../assets/imgs/profil.jpg" class="img-fluid rounded-circle" alt="Logo" width="10%">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="acceuil.html">Accueil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="infolab.html">InfoLab</a></li>
-                        <li class="nav-item"><a class="nav-link" href="enactus.html">Enactus</a></li>
-                        <li class="nav-item"><a class="nav-link" href="radio.html">Radio</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="acceuil1.html">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="infolab1.html">InfoLab</a></li>
+                        <li class="nav-item"><a class="nav-link" href="enactus1.html">Enactus</a></li>
+                        <li class="nav-item"><a class="nav-link" href="radio1.html">Radio</a></li>
                     </ul>
                 </div>
             </ul>
             <form class="d-flex ms-3">
-                <a href="logout.php" class="btn btn-outline-light me-2">Déconnexion</a>
+            <a href="logout.php"><button type="button" class="btn btn-outline-success" >déconnecté</button></a>
             </form>
         </div>
     </nav>
